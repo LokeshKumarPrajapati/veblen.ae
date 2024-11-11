@@ -1,0 +1,388 @@
+// Variables
+$header-bg = #ffffff
+$header-border = #e5e7eb
+$primary-color = #2563eb
+$secondary-color = #1e40af
+$text-dark = #1f2937
+$text-light = #6b7280
+$hover-bg = #f3f4f6
+$transition = all 0.3s ease
+$shadow-sm = 0 1px 2px rgba(0, 0, 0, 0.05)
+$shadow-md = 0 4px 6px rgba(0, 0, 0, 0.1)
+$radius = 8px
+
+// Animations
+@keyframes slideDown
+  0%
+    transform translateY(-100%)
+    opacity 0
+  100%
+    transform translateY(0)
+    opacity 1
+
+@keyframes fadeIn
+  0%
+    opacity 0
+  100%
+    opacity 1
+
+// Base Header Styles
+header
+  width 100%
+  background $header-bg
+  position relative
+  z-index 50
+  
+  &.no-banner .top-bar
+    border-top none
+
+// Top Bar Styles
+.top-bar
+  background-color #e6c740
+  border-bottom 1px solid $header-border
+  font-size 0.875rem
+  padding 8px 0
+  transition $transition
+  color #000
+  
+  .top-bar-content
+    display flex
+    justify-content space-between
+    align-items center
+  
+  .top-left,
+  .top-right
+    display flex
+    align-items center
+    gap 20px
+  
+  .separator
+    width 1px
+    height 16px
+    background $header-border
+  
+  .contact-link,
+  .auth-link
+    display flex
+    align-items center
+    gap 6px
+    color #fff
+    text-decoration none
+    transition $transition
+    
+    &:hover
+      color #fff
+      transform translateY(-1px)
+    
+    .icon
+      font-size 16px
+  
+  .users-count
+    display flex
+    align-items center
+    gap 6px
+    color $text-light
+
+// Header Main Styles
+.header-main
+  background $header-bg
+
+  transition $transition
+  border-bottom 1px solid $header-border
+  
+  &.sticky
+    position fixed
+    top 0
+    left 0
+    right 0
+    background rgba(255, 255, 255, 0.98)
+    backdrop-filter blur(8px)
+    box-shadow $shadow-md
+    animation slideDown 0.3s ease-out
+
+    
+    .logo img
+      height 65px
+  
+  .header-content
+    display flex
+    align-items center
+    gap 20%
+
+// Logo Styles
+.logo
+  flex-shrink 0
+  transition $transition
+  
+  img
+    height 80px
+    width auto
+    object-fit contain
+    transition $transition
+
+// Search Form Styles
+.search-form
+  flex 1
+  max-width 600px
+  position relative
+  
+  .search-input-wrapper
+    display flex
+    align-items center
+    background white
+    border 2px solid $header-border
+    border-radius $radius
+    transition $transition
+    overflow hidden
+    
+    &:focus-within
+      border-color $primary-color
+      box-shadow 0 0 0 3px rgba(37, 99, 235, 0.1)
+    
+    input
+      flex 1
+      padding 12px 16px
+      border none
+      outline none
+      width 100%
+      font-size 0.95rem
+      background transparent
+    
+    .search-button
+      padding 0 16px
+      color $text-light
+      background none
+      border none
+      cursor pointer
+      display flex
+      align-items center
+      transition $transition
+      
+      &:hover
+        color $primary-color
+        transform scale(1.1)
+
+// Header Actions Styles
+.header-actions
+  display flex
+  align-items center
+  gap 24px
+
+// Account Dropdown Styles
+.account-dropdown
+  position relative
+  
+  .account-button
+    display flex
+    align-items center
+    gap 8px
+    padding 8px 16px
+    border none
+    background $hover-bg
+    color $text-dark
+    font-weight 500
+    cursor pointer
+    border-radius $radius
+    transition $transition
+    
+    &:hover
+      background darken($hover-bg, 5%)
+    
+    .icon
+      transition $transition
+      
+      &.rotated
+        transform rotate(180deg)
+  
+  .dropdown-menu
+    position absolute
+    top calc(100% + 8px)
+    right 0
+    width 220px
+    background white
+    border-radius $radius
+    box-shadow $shadow-md
+    padding 8px 0
+    opacity 0
+    visibility hidden
+    transform translateY(10px)
+    transition $transition
+    
+    &.active
+      opacity 1
+      visibility visible
+      transform translateY(0)
+    
+    .dropdown-item
+      display flex
+      align-items center
+      gap 12px
+      padding 12px 16px
+      color $text-dark
+      text-decoration none
+      transition $transition
+      border none
+      background none
+      width 100%
+      text-align left
+      cursor pointer
+      
+      &:hover
+        background $hover-bg
+        color $primary-color
+        
+        .icon
+          transform translateX(2px)
+      
+      .icon
+        font-size 18px
+        color $text-light
+        transition $transition
+
+// Cart Button Styles
+.cart-button
+  position relative
+  display flex
+  align-items center
+  gap 8px
+  padding 8px 16px
+  background #000
+  color white
+  border-radius $radius
+  text-decoration none
+  transition $transition
+  
+  &:hover
+    background #e6c740
+    transform translateY(-1px)
+    color #fff
+  
+  .cart-badge
+    position absolute
+    top -8px
+    right -8px
+    background #ef4444
+    color white
+    font-size 0.75rem
+    font-weight 600
+    padding 2px 6px
+    border-radius 12px
+    border 2px solid white
+    animation fadeIn 0.3s ease-out
+  
+  .cart-text
+    font-weight 500
+
+// Navigation Menu Styles
+.nav-menu
+  background $header-bg
+  border-bottom 1px solid $header-border
+  
+  .nav-content
+    display flex
+    justify-content space-between
+    height 50px
+    
+    .nav-left,
+    .nav-right
+      display flex
+      gap 32px
+    
+    .nav-link
+      display flex
+      align-items center
+      padding 0
+      height 100%
+      color $text-dark
+      font-weight 500
+      text-decoration none
+      position relative
+      transition $transition
+      
+      &:after
+        content ''
+        position absolute
+        bottom -1px
+        left 0
+        width 100%
+        height 2px
+        background $primary-color
+        transform scaleX(0)
+        transition $transition
+      
+      &:hover
+        color $primary-color
+        
+        &:after
+          transform scaleX(1)
+
+// Responsive Styles
+@media (max-width: 1024px)
+  .header-main .header-content
+    gap 20px
+  
+  .search-form
+    max-width 400px
+
+@media (max-width: 768px)
+  .top-bar
+    .contact-link span,
+    .auth-link span:not(.icon)
+      display none
+  
+  .header-main
+    .header-content
+      padding 15px 0
+    
+    .nav-menu
+      overflow-x auto
+      
+      .nav-content
+        min-width 600px
+
+@media (max-width: 640px)
+  .top-bar
+    display none
+  
+  .header-main
+    .header-content
+      gap 10px
+    
+    .logo img
+      height 32px
+    
+    .search-form
+      display none
+    
+    .cart-button .cart-text
+      display none
+    
+    .account-button span
+      display none
+
+@media (max-width: 480px)
+  .header-main
+    .header-content
+      justify-content space-between
+    
+    .nav-menu .nav-content
+      min-width 450px
+    
+    .nav-link
+      font-size 0.875rem
+
+
+
+.total-user-count
+  font-size: 15px
+
+  color: #000
+  background-color: #f0f4f8
+  padding: 8px 12px
+  border-radius: 4px
+  display: inline-block
+  
+
+
+ 
+
